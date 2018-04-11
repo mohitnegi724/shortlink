@@ -6,11 +6,12 @@ const ShortUrl = new Schema({
 		type:String,
 		unique: true
 	},
-	createdDate: String,
-	randomId:{
+	createdDate: {
+	 	type: String
+	 },
+	shortId:{
 		type: String,
 		unique: true
-	}
-})
-mongoose.connect(keys.mongoURI);
+	},
+});
 const Links = module.exports = mongoose.model('ShortLinks', ShortUrl);

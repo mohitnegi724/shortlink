@@ -1,44 +1,71 @@
 const express = require('express');
 const app = express();
+const http = require('http');
 const bodyParser = require('body-parser');
-const Links = require('./Models/shortlinks')
-const base64 = require('base-64');
-require('./public/javascript/shortener');
+const mongoose = require("mongoose");
+const keys = require('./config/keys');
+const Links = require('./Models/shortlinks');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+mongoose.connect(keys.mongoURI);
+
 app.get('/',(req, res)=>{
-  res.sendFile(__dirname + '/public/html/homepage.html')
+  res.sendFile(__dirname + '/public/html/index.html')
 })
 
 app.post('/shorturl', (req, res)=>{
+    function urlUniqueIdFunction(){
+      let text = "";
+      possible="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      for(var i =0; i<3; i++)
+        text += possible.charAt(Math.floor(Math.random()* possible.length));
+        return text;
+    };
+
+    // input URL
     const inputURL = req.body.url;
-    const URLDate = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
-    const uniqueRandomId = urlUniqeIdFunction();
+    
+    //Link Creation Date
+    var currentdate = new Date(); 
+    var datetime =    currentdate.getDate() + "/"
+                    + (currentdate.getMonth()+1)  + "/" 
+                    + currentdate.getFullYear() + "~ "  
+                    + currentdate.getHours() + ":"  
+                    + currentdate.getMinutes();
+
+    const URLDate = datetime;
+    
+    //Short Link Id
+    const uniqueRandomId =  urlUniqueIdFunction();
     Links.findOne({originalURL : inputURL}, (err, doc)=>{
     if(doc){
+        console.log("The URL Was Alreay created");
         res.send("This Url has Already created at Date " + doc.createdDate).status(200);
       }
       else if (inputURL ==="") {
+        console.log("The Input was Empty");
         res.send("Sorry, Please Paste The Link")
       }
     else {
       const newURL = {
         originalURL: inputURL,
         createdDate: URLDate,
-        randomId: urlUniqeIdFunction(),
+        shortId: uniqueRandomId
       };
       Links.create(newURL)
       .then(success=>{
-        res.redirect('/shortlinks')
+        console.log("The URL Was created");
+        res.redirect('/')
       })
       .catch(error=>{
-        res.send("There was an error")
+        console.log("The URL Was not created");
+        res.send(error);
       })
     }
   })
-})
+});
 
 app.get('/shortlinks',(req, res)=>{
   Links.find({}, (error, docs)=>{
@@ -51,8 +78,43 @@ app.get('/shortlinks',(req, res)=>{
   })
 })
 
-app.get('/deleteAllLinks',function(req, res){
-  Links.remove()
+app.get('/:shortId',(req, res)=>{
+  Links.find({shortId : req.params.shortId}, (err, doc)=>{
+    if (err) {
+      console.log(err);
+      res.json(err)
+    }
+    if(doc){
+      for(var i = 0; i<doc.length; i++){
+              if (doc[i].shortId == req.params.shortId) {
+                console.log(doc[i].originalURL);
+                res.redirect(doc[i].originalURL)
+              }
+            }
+    }
+      res.sendFile(__dirname + '/public/html/404.html')
+
+  })
+})
+
+
+
+app.get('/:shortId/delete',(req, res)=>{
+  Links.findOneAndRemove({shortId : req.params.shortId}, (err)=>{
+    if (err) {
+      console.log(err);
+      res.json("Sorry, This Link Coudn't Deleted")
+    }
+    else{
+      res.redirect('/')
+    }
+  })
+})
+
+app.get('/deleteall/deleteAllLinks',function(req, res){
+  Links.remove(()=>{
+    console.log("Lets Delete")
+  })
   .then(success=>{
     res.redirect('/')
   })
@@ -61,24 +123,7 @@ app.get('/deleteAllLinks',function(req, res){
   })
 })
 
-app.get('/:randomId',(req, res)=>{
-  Links.find({randomId : req.params.randomId}, (err, doc)=>{
-    if (err) {
-      console.log(err);
-      res.json("Sorry, This Link isn't in our Database")
-    }
-    else{
-      for(var i = 0; i<doc.length; i++){
-              if (doc[i].randomId == req.params.randomId) {
-                console.log(doc[i].originalURL);
-                res.redirect(doc[i].originalURL)
-              }
-            }
-    }
-  })
-})
 
-const PORT = process.env.PORT || 3000
-app.listen(PORT, function(){
+app.listen(3000, function(){
   console.log("Server is running on Port 3000")
 });
