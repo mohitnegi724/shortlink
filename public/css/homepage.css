@@ -1,0 +1,181 @@
+			body{
+				background-repeat: no-repeat;
+				font-family: quicksand;
+		        margin:0;
+		        padding: 0;
+		        max-width: 100%;
+		        outline: none;
+		        font-size:20px;
+		    	}
+		    a{
+		    	outline: none;
+				text-decoration:none;
+				color:#039be5;
+				height: 40px;
+    			overflow: hidden;
+    			display: block;
+    			line-height:2;
+		    }
+			.header{
+		        width: 100%;
+		        height: 64px;
+		        color:white;
+		        margin:0;
+		        padding: 0;
+		        padding-top:10px;
+		    	}
+			.container{
+				margin-left: 0;
+				padding:0;
+				}
+		    .shortlinkBody{
+		    	width: 100%;
+		    	height: 193px;
+		    	color: white;
+		    	background-color: #366ed1;
+		        margin:0;
+		        padding: 20px 0px;
+		    	}
+		    .shortlinkBody .middlebody{
+		    	width: 1200px;
+		    	min-height: 150px;
+		    	margin-right: auto;
+		    	margin-left: auto
+			   }
+			.oneFourth{
+				text-align: center;
+				overflow: hidden;
+				width: 25%;
+				max-width: 500px;
+			    padding-left: 10px;
+			    padding-right: 10px;
+				}
+		    #url{
+		    	width: 100%;
+		        max-width: 600px;
+		        height: 40px;
+		        margin-right: 20px;
+		        padding: 0 16px;
+		        font-family: inherit;
+		        font-size: 14px;
+		        line-height: 36px;
+		        border: none;
+		        border-radius: 2px;
+		        outline: none;
+		    	}
+
+		    #preview{
+		    	float: right;
+		    	/*display: block;*/
+		    	display: none;
+		    	color: black;
+		    }
+		    #submit {
+		          outline: none;
+		          width: 125px;
+		          color: #039be5;
+		          background-color: white;
+		          font-family: quicksand;
+		          height: 40px;
+		          margin-left: 10px;
+		          border: none;
+		          cursor: pointer;
+		          box-shadow: 0px 2px 4px -2px rgb(32,32,32);
+		          transition: 0.5s ease-in-out;
+		    	}
+			.ShortLink{
+				width: 25%;
+				height: 40px;
+				border: none;
+				outline: none;
+				font-weight: bold;
+				font-family: quicksand;
+				transition: 0.9s ease-in-out;
+				}
+			.ShortLink a{
+				float: left;
+				text-decoration:none;
+				color:#039be5;
+				height: 40px;
+    			overflow: hidden;
+    			line-height:2;
+    			display: inline;
+			}
+			.delete{
+				color: red;
+			}
+			#deleteAllLinks{
+				bottom:0;
+				right:0;
+				background-color: #ff0000b0;
+				color: white;
+				width:100px;
+				height:40px;
+				font-family: quicksand;
+				font-size: 15px;
+				cursor: pointer;
+				border:none;
+				box-shadow: 0px 2px 4px -2px rgb(32,32,32);
+				outline: none;
+				margin-right: 50px;
+	    		margin-bottom: 50px;
+				position: fixed;
+				float: right;
+				}
+			.TableHead{
+				height: 20px;
+				}
+			table{
+				padding: 20px;
+			 	width: 100%;
+				position: absolute;
+			}
+			thead{
+				margin-top:20px;
+				color: black;
+			}
+			th{
+				height: 40px;
+				width: 100%;
+				}
+			td{
+				height: 40px;
+				padding: 8px;
+			}
+			tr{
+				cursor: pointer;
+				display: table-row;
+			    vertical-align: inherit;
+			    border-color: inherit;
+			    transition: 0.1s ease-in-out;
+			}
+			tr:hover{
+				border-bottom: 1px solid black;
+				display: table-row;
+			    vertical-align: inherit;
+			}
+			i{
+				cursor: pointer;
+			}
+
+			#OriginalLink{
+				overflow: hidden;
+				text-align: left;
+				padding-left: 10px;
+				max-height:40px;
+				position: relative;
+			}
+			#linkCreatedDate{
+				text-align: center;
+				width: 15%;
+				position: relative;
+			}
+			#ShortLink{
+				position: relative;
+			}
+			#DeleteLink{
+				z-index: 100;
+				text-align: center;
+				width: 10%;
+				position: relative;
+			}

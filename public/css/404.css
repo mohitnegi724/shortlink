@@ -1,0 +1,25 @@
+body{
+	background-color: #366ed1;
+}
+.ErrDiv{
+	font-family: 'Poiret One','Quicksand', cursive;
+	font-weight: bolder;
+	text-align: center;
+	width: 500px;
+	height: 80vh;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute;	
+}
+
+.ErrDiv h1{
+	font-size: 100px;
+}
+a{
+	padding: 10px;
+	font-family: quicksand;
+	color: black;
+	text-decoration: none;
+	box-shadow: 0px 0px 4px 1px rgb(32,32,32);
+}
