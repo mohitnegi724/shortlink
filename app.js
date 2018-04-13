@@ -42,7 +42,7 @@ app.post('/shorturl', (req, res)=>{
     Links.findOne({originalURL : inputURL}, (err, doc)=>{
     if(doc){
         console.log("The URL Was Alreay created");
-        res.send("This Url has Already created at Date " + doc.createdDate).status(200);
+        return res.send("This Url has Already created at Date " + doc.createdDate).end();
       }
       else if (inputURL ==="") {
         console.log("The Input was Empty");
@@ -70,7 +70,7 @@ app.post('/shorturl', (req, res)=>{
 app.get('/shortlinks',(req, res)=>{
   Links.find({}, (error, docs)=>{
     if(error){
-      res.json("Sorry, There Was An Error While Finding All Users")
+      return res.json("Sorry, There Was An Error While Finding All Users")
     }
     else {
       res.json(docs)
@@ -82,18 +82,20 @@ app.get('/:shortId',(req, res)=>{
   Links.find({shortId : req.params.shortId}, (err, doc)=>{
     if (err) {
       console.log(err);
-      res.json(err)
+      return res.json(err)
     }
-    if(doc){
+    else if(doc){
       for(var i = 0; i<doc.length; i++){
               if (doc[i].shortId == req.params.shortId) {
                 console.log(doc[i].originalURL);
                 res.redirect(doc[i].originalURL)
               }
+              else{
+                console.log(doc[i].originalURL);
+              }
             }
     }
-      res.sendFile(__dirname + '/public/html/404.html')
-
+    return res.sendFile(__dirname + '/public/html/404.html');
   })
 })
 
@@ -103,7 +105,7 @@ app.get('/:shortId/delete',(req, res)=>{
   Links.findOneAndRemove({shortId : req.params.shortId}, (err)=>{
     if (err) {
       console.log(err);
-      res.json("Sorry, This Link Coudn't Deleted")
+      return res.json("Sorry, This Link Coudn't Deleted")
     }
     else{
       res.redirect('/')
