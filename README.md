@@ -1,3 +1,1 @@
-"# shortlink" 
-"# shortlink" 
-"# shortlink" 
+"This App is made for code practise"
