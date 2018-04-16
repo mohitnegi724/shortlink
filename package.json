@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "link shortner",
   "main": "index.js",
-  "engines":{
-    "node":"8.1.1",
-    "npm":"5.0.3"
+  "engines": {
+    "node": "9.5.0",
+    "npm": "5.6.0"
   },
   "scripts": {
     "start": "node app.js",
@@ -19,7 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4  .16.3",
+    "express": "4.16.3",
     "git": "^0.1.5",
     "heroku": "^0.2.0",
     "heroku-cli": "^6.16.4",

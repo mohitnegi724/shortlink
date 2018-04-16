@@ -9,12 +9,16 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//Connecting to Mongoose
 mongoose.connect(keys.mongoURI);
 
+//Go to Homepage
 app.get('/',(req, res)=>{
+  console.log("nmvmb v,             ndsbkj      dbvfds");
   res.sendFile(__dirname + '/public/html/index.html')
 })
 
+//Create ShortURL
 app.post('/shorturl', (req, res)=>{
     function urlUniqueIdFunction(){
       let text = "";
@@ -67,6 +71,7 @@ app.post('/shorturl', (req, res)=>{
   })
 });
 
+//Check All The Short Links
 app.get('/shortlinks',(req, res)=>{
   Links.find({}, (error, docs)=>{
     if(error){
@@ -78,6 +83,7 @@ app.get('/shortlinks',(req, res)=>{
   })
 })
 
+//Redirect ShortURL to Their Original Links
 app.get('/:shortId',(req, res)=>{
   Links.find({shortId : req.params.shortId}, (err, doc)=>{
     if (err) {
@@ -99,8 +105,7 @@ app.get('/:shortId',(req, res)=>{
   })
 })
 
-
-
+//Delete ShortURL
 app.get('/:shortId/delete',(req, res)=>{
   Links.findOneAndRemove({shortId : req.params.shortId}, (err)=>{
     if (err) {
@@ -113,6 +118,7 @@ app.get('/:shortId/delete',(req, res)=>{
   })
 })
 
+//Delete All Links
 app.get('/deleteall/deleteAllLinks',function(req, res){
   Links.remove(()=>{
     console.log("Lets Delete")
@@ -125,9 +131,14 @@ app.get('/deleteall/deleteAllLinks',function(req, res){
   })
 })
 
+//Schedule link to delete
+app.get('/:shortId/expirelink',(req, res)=>{
+})
 
+//PORT
 const PORT = process.env.PORT || 3000;
 
+//PORT RUN
 app.listen(PORT, function(){
   console.log("Server is running on Port 3000")
 });
