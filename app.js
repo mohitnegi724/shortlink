@@ -3,7 +3,7 @@ const app = express();
 const http = require('http');
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
-const keys = require('./config/keys');
+const keys = require('../config/keys');
 const Links = require('./Models/shortlinks');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
@@ -14,7 +14,7 @@ mongoose.connect(keys.mongoURI);
 
 //Go to Homepage
 app.get('/',(req, res)=>{
-  console.log("nmvmb v,             ndsbkj      dbvfds");
+  console.log("On Home Page");
   res.sendFile(__dirname + '/public/html/index.html')
 })
 
@@ -140,5 +140,5 @@ const PORT = process.env.PORT || 3000;
 
 //PORT RUN
 app.listen(PORT, function(){
-  console.log("Server is running on Port 3000")
+  console.log("Server is running on Port " + PORT)
 });
