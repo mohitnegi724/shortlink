@@ -8,8 +8,8 @@ function getAllData(){
       <tr>
           <td class="oneFourth" id="OriginalLink"><a href="${shortURL.originalURL}">${shortURL.originalURL}</a></td>
           <td class="oneFourth">${shortURL.createdDate}</td>
-          <td class="ShortLink"><a href="http://localhost:3000/${shortURL.shortId}" target="_blank">http://localhost:3000/${shortURL.shortId}</a><i class="material-icons" id="preview">visibility</i></td>
-          <td class="oneFourth"><i class="material-icons"><a class="delete" href="http://localhost:3000/${shortURL.shortId}/delete">delete</a></i></td>
+          <td class="ShortLink"><a href="/${shortURL.shortId}" target="_blank">http://localhost:3000/${shortURL.shortId}</a><i class="material-icons" id="preview">visibility</i></td>
+          <td class="oneFourth"><i class="material-icons"><a class="delete" href="/${shortURL.shortId}/delete">delete</a></i></td>
       </tr>
       `
     });
