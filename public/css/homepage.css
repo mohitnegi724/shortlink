@@ -5,10 +5,7 @@
 		        padding: 0;
 		        max-width: 100%;
 		        outline: none;
-<<<<<<< HEAD
-=======
 		        font-size:20px;
->>>>>>> b6f72fbad74d48778f0281abbe4e5b83c052648e
 		    	}
 		    a{
 		    	outline: none;
@@ -67,9 +64,10 @@
 		        outline: none;
 		    	}
 
-		    #preview{
+		    #previewLink{
+		    	width: 76.92% !important;
+		    	    height: 76.92% !important;
 		    	float: right;
-		    	/*display: block;*/
 		    	display: none;
 		    	color: black;
 		    }
@@ -146,11 +144,9 @@
 				padding: 8px;
 			}
 			tr{
-<<<<<<< HEAD
 				display: table-row;
 			    vertical-align: inherit;
 			    border-color: inherit;
-=======
 				cursor: pointer;
 				display: table-row;
 			    vertical-align: inherit;
@@ -161,7 +157,6 @@
 				border-bottom: 1px solid black;
 				display: table-row;
 			    vertical-align: inherit;
->>>>>>> b6f72fbad74d48778f0281abbe4e5b83c052648e
 			}
 			i{
 				cursor: pointer;
@@ -183,10 +178,7 @@
 				position: relative;
 			}
 			#DeleteLink{
-<<<<<<< HEAD
-=======
 				z-index: 100;
->>>>>>> b6f72fbad74d48778f0281abbe4e5b83c052648e
 				text-align: center;
 				width: 10%;
 				position: relative;
