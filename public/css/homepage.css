@@ -85,6 +85,7 @@
 		          transition: 0.5s ease-in-out;
 		    	}
 			.ShortLink{
+				text-align: center;
 				width: 25%;
 				height: 40px;
 				border: none;
@@ -184,7 +185,7 @@
 			#ShortLink{
 				position: relative;
 			}
-			#DeleteLink{
+			.deleteLink{
 				z-index: 100;
 				text-align: center;
 				width: 10%;
