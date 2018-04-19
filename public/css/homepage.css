@@ -64,9 +64,10 @@
 		        outline: none;
 		    	}
 
-		    #preview{
+		    #previewLink{
+		    	width: 76.92% !important;
+		    	    height: 76.92% !important;
 		    	float: right;
-		    	/*display: block;*/
 		    	display: none;
 		    	color: black;
 		    }
@@ -103,6 +104,10 @@
 			}
 			.delete{
 				color: red;
+				transition: 0.9s ease-in-out;
+			}
+			.delete:hover{
+				color: black;
 			}
 			#deleteAllLinks{
 				bottom:0;
@@ -143,6 +148,9 @@
 				padding: 8px;
 			}
 			tr{
+				display: table-row;
+			    vertical-align: inherit;
+			    border-color: inherit;
 				cursor: pointer;
 				display: table-row;
 			    vertical-align: inherit;

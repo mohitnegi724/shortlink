@@ -89,10 +89,9 @@ app.get('/:shortId',(req, res)=>{
               }
             }
     }
-      res.status(404).sendFile(__dirname + '/public/html/404.html');
+     res.status(400).sendFile(__dirname + '/public/html/404.html');
   })
 })
-
 
 
 app.get('/:shortId/delete',(req, res)=>{
