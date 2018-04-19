@@ -8,7 +8,11 @@ function getAllData(){
       <tr>
           <td class="oneFourth" id="OriginalLink"><a href="${shortURL.originalURL}">${shortURL.originalURL}</a></td>
           <td class="oneFourth">${shortURL.createdDate}</td>
+<<<<<<< HEAD
           <td class="ShortLink"><a href="/${shortURL.shortId}" target="_blank" id="mainLink">https://shorturlbymohit.herokuapp.com/${shortURL.shortId}</a><i class="material-icons" id="previewLink">visibility</i></td>
+=======
+          <td class="ShortLink"><a href="/${shortURL.shortId}" target="_blank">https://shorturlbymohit.herokuapp.com/${shortURL.shortId}</a><i class="material-icons" id="preview">visibility</i></td>
+>>>>>>> 8ce9ea1d2e56895a60a491214f0edfbcca0d4480
           <td class="oneFourth"><i class="material-icons"><a class="delete" href="/${shortURL.shortId}/delete">delete</a></i></td>
       </tr>
       `
@@ -17,4 +21,8 @@ function getAllData(){
   })
 }
 
+<<<<<<< HEAD
 getAllData()
+=======
+getAllData()
+>>>>>>> 8ce9ea1d2e56895a60a491214f0edfbcca0d4480

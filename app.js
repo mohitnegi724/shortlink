@@ -89,7 +89,11 @@ app.get('/:shortId',(req, res)=>{
               }
             }
     }
+<<<<<<< HEAD
      res.status(400).sendFile(__dirname + '/public/html/404.html');
+=======
+    res.status(404).sendFile(__dirname + '/public/html/404.html');
+>>>>>>> 8ce9ea1d2e56895a60a491214f0edfbcca0d4480
   })
 })
 
