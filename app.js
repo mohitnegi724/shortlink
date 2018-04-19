@@ -64,7 +64,7 @@ app.post('/shorturl', (req, res)=>{
   })
 });
 
-app.get('/shortlinks',(req, res)=>{
+app.post('/shortlinks',(req, res)=>{
   Links.find({}, (error, docs)=>{
     if(error){
       res.json("Sorry, There Was An Error While Finding All Users")
