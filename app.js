@@ -106,7 +106,7 @@ app.get('/:shortId/delete',(req, res)=>{
   })
 })
 
-app.get('/deleteall/deleteAllLinks',function(req, res){
+app.post('/deleteall/deleteAllLinks',function(req, res){
   Links.remove(()=>{
     console.log("Lets Delete")
   })

@@ -37,5 +37,16 @@ $(function () {
               return getAllData()
             }
           });
+          document.getElementById("mainForm").reset();
         });
-      });
+});
+
+function DeleteAllData(){
+  $.ajax({
+    url: '/deleteall/deleteAllLinks',
+    type: "POST",
+    success: function(){
+      return getAllData()
+    }
+  })
+}
