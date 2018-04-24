@@ -5,10 +5,7 @@
 		        padding: 0;
 		        max-width: 100%;
 		        outline: none;
-<<<<<<< HEAD
-=======
 		        font-size:20px;
->>>>>>> b6f72fbad74d48778f0281abbe4e5b83c052648e
 		    	}
 		    a{
 		    	outline: none;
@@ -88,6 +85,7 @@
 		          transition: 0.5s ease-in-out;
 		    	}
 			.ShortLink{
+				text-align: center;
 				width: 25%;
 				height: 40px;
 				border: none;
@@ -151,17 +149,12 @@
 				padding: 8px;
 			}
 			tr{
-<<<<<<< HEAD
 				display: table-row;
 			    vertical-align: inherit;
 			    border-color: inherit;
-=======
-<<<<<<< HEAD
 				display: table-row;
 			    vertical-align: inherit;
 			    border-color: inherit;
-=======
->>>>>>> 8ce9ea1d2e56895a60a491214f0edfbcca0d4480
 				cursor: pointer;
 				display: table-row;
 			    vertical-align: inherit;
@@ -172,7 +165,6 @@
 				border-bottom: 1px solid black;
 				display: table-row;
 			    vertical-align: inherit;
->>>>>>> b6f72fbad74d48778f0281abbe4e5b83c052648e
 			}
 			i{
 				cursor: pointer;
@@ -193,11 +185,8 @@
 			#ShortLink{
 				position: relative;
 			}
-			#DeleteLink{
-<<<<<<< HEAD
-=======
+			.deleteLink{
 				z-index: 100;
->>>>>>> b6f72fbad74d48778f0281abbe4e5b83c052648e
 				text-align: center;
 				width: 10%;
 				position: relative;

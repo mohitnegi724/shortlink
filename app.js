@@ -39,7 +39,7 @@ app.post('/shorturl', (req, res)=>{
     Links.findOne({originalURL : inputURL}, (err, doc)=>{
     if(doc){
         console.log("The URL Was Alreay created");
-        res.send("This Url has Already created at Date " + doc.createdDate).status(200);
+        res.send("This Url has Already at  " + doc.createdDate);
       }
       else if (inputURL ==="") {
         console.log("The Input was Empty");
@@ -64,7 +64,7 @@ app.post('/shorturl', (req, res)=>{
   })
 });
 
-app.get('/shortlinks',(req, res)=>{
+app.post('/shortlinks',(req, res)=>{
   Links.find({}, (error, docs)=>{
     if(error){
       res.json("Sorry, There Was An Error While Finding All Users")
@@ -84,16 +84,12 @@ app.get('/:shortId',(req, res)=>{
     else if(doc){
       for(var i = 0; i<doc.length; i++){
               if (doc[i].shortId == req.params.shortId) {
-                console.log(doc[i].originalURL);
-                res.status(200).redirect(doc[i].originalURL);
+                console.log("Opening " + doc[i].originalURL);
+                res.status(301).redirect(doc[i].originalURL);
               }
             }
     }
-<<<<<<< HEAD
      res.status(400).sendFile(__dirname + '/public/html/404.html');
-=======
-    res.status(404).sendFile(__dirname + '/public/html/404.html');
->>>>>>> 8ce9ea1d2e56895a60a491214f0edfbcca0d4480
   })
 })
 
@@ -105,14 +101,15 @@ app.get('/:shortId/delete',(req, res)=>{
       res.json("Sorry, This Link Coudn't Deleted")
     }
     else{
+      console.log("Deleting the short link");
       res.redirect('/');
     }
   })
 })
 
-app.get('/deleteall/deleteAllLinks',function(req, res){
+app.post('/deleteall/deleteAllLinks',function(req, res){
   Links.remove(()=>{
-    console.log("Lets Delete")
+    console.log("Delete All Links")
   })
   .then(success=>{
     res.redirect('/')

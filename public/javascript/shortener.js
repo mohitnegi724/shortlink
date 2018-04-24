@@ -1,28 +1,53 @@
+//Getting Data From MongoDb and Sending Them to Client Browser
+
 function getAllData(){
-  fetch('/shortlinks')
-  .then((res) => res.json())
-  .then((data) => {
+  $.ajax({
+    type: "POST",
+    url : "/ShortLinks",
+    data: $('form').serialize(), 
+  })
+  .done((data)=>{
     let URLS = '';
-    data.forEach(function(shortURL){
-      URLS += `
-      <tr>
-          <td class="oneFourth" id="OriginalLink"><a href="${shortURL.originalURL}">${shortURL.originalURL}</a></td>
-          <td class="oneFourth">${shortURL.createdDate}</td>
-<<<<<<< HEAD
-          <td class="ShortLink"><a href="/${shortURL.shortId}" target="_blank" id="mainLink">https://shorturlbymohit.herokuapp.com/${shortURL.shortId}</a><i class="material-icons" id="previewLink">visibility</i></td>
-=======
-          <td class="ShortLink"><a href="/${shortURL.shortId}" target="_blank">https://shorturlbymohit.herokuapp.com/${shortURL.shortId}</a><i class="material-icons" id="preview">visibility</i></td>
->>>>>>> 8ce9ea1d2e56895a60a491214f0edfbcca0d4480
-          <td class="oneFourth"><i class="material-icons"><a class="delete" href="/${shortURL.shortId}/delete">delete</a></i></td>
-      </tr>
-      `
-    });
-    document.getElementById('output').innerHTML = URLS;
+        data.forEach(function(shortURL){
+          URLS += `
+          <tr>
+              <td class="oneFourth" id="OriginalLink"><a href="${shortURL.originalURL}">${shortURL.originalURL}</a></td>
+              <td class="oneFourth">${shortURL.createdDate}</td>
+              <td class="ShortLink"><a href="/${shortURL.shortId}" target="_blank" id="mainLink">https://shorturlbymohit.herokuapp.com/${shortURL.shortId}</a><i class="material-icons" id="previewLink">visibility</i></td>
+              <td class="deleteLink"><i class="material-icons"><a href="/${shortURL.shortId}/delete">delete</a></i></td>
+          </tr>
+          `
+        });
+        document.getElementById('output').innerHTML = URLS;
+  })
+  .fail((err)=>{alert(err)})
+}
+getAllData();
+
+
+//Saving Input in Backend and Frontend without REloading the Browser
+$(function () {
+        $('form').on('submit', function (e) {
+          e.preventDefault();
+          $.ajax({
+            type: 'post',
+            url: '/shortURL',
+            data: $('form').serialize(),
+            success: function () {
+              return getAllData()
+            }
+          });
+          document.getElementById("mainForm").reset();
+        });
+});
+
+//Delete without REloading the Browser
+function DeleteAllData(){
+  $.ajax({
+    url: '/deleteall/deleteAllLinks',
+    type: "POST",
+    success: function(){
+      return getAllData()
+    }
   })
 }
-
-<<<<<<< HEAD
-getAllData()
-=======
-getAllData()
->>>>>>> 8ce9ea1d2e56895a60a491214f0edfbcca0d4480

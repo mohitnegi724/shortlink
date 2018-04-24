@@ -17,7 +17,7 @@
               <h1 style="font-weight: normal;">
                 Simplify your Life with Simple Shorten Links
               </h1>
-              <form method="post" action="/shorturl">
+              <form id="mainForm" method="POST" action="/shorturl">
                 <input id="url" type="url" name="url" placeholder="Paste Your Original URL">
                 <button id="submit" type="submit" onclick="getAllData()"><b>SHORT URL</b></button>
               </form>
@@ -29,7 +29,7 @@
               <thead>
                   <td class="oneFourth"><b>Original URL</b></td>
                   <td class="oneFourth"><b>Created</b></td>
-                  <td class="oneFourth"><b>Short URL</b></td>
+                  <td class="ShortLink"><b>Short URL</b></td>
                   <td class="oneFourth"><b>Delete Link</b></td>
               </thead>
               <tbody id="output">
@@ -37,7 +37,7 @@
               </tbody>
           </table>
           <div>
-            <a href="/deleteall/deleteAllLinks"><button id="deleteAllLinks">Delete All</button></a>
+            <button id="deleteAllLinks" onclick="DeleteAllData()">Delete All</button>
           </div>
         </div>
     </div>
