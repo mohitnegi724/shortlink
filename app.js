@@ -79,17 +79,20 @@ app.get('/:shortId',(req, res)=>{
   Links.find({shortId : req.params.shortId}, (err, doc)=>{
     if (err) {
       console.log(err);
-      res.status(404).sendFile(__dirname + '/public/html/404.html');
+      res.status(404);
+      res.sendFile(__dirname + '/public/html/404.html');
     }
     else if(doc){
       for(var i = 0; i<doc.length; i++){
               if (doc[i].shortId == req.params.shortId) {
                 console.log("Opening " + doc[i].originalURL);
-                res.redirect(doc[i].originalURL).status(301);
+                res.status(301);
+                res.redirect(doc[i].originalURL);
               }
             }
     }
-     res.status(400).sendFile(__dirname + '/public/html/404.html');
+     res.status(400);
+     res.sendFile(__dirname + '/public/html/404.html');
   })
 })
 
