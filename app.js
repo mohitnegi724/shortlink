@@ -85,7 +85,7 @@ app.get('/:shortId',(req, res)=>{
       for(var i = 0; i<doc.length; i++){
               if (doc[i].shortId == req.params.shortId) {
                 console.log("Opening " + doc[i].originalURL);
-                res.status(301).redirect(doc[i].originalURL);
+                res.redirect(doc[i].originalURL).status(301);
               }
             }
     }

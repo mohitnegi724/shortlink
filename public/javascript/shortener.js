@@ -14,7 +14,7 @@ function getAllData(){
               <td class="oneFourth" id="OriginalLink"><a href="${shortURL.originalURL}">${shortURL.originalURL}</a></td>
               <td class="oneFourth">${shortURL.createdDate}</td>
               <td class="ShortLink"><a href="/${shortURL.shortId}" target="_blank" id="mainLink">https://shorturlbymohit.herokuapp.com/${shortURL.shortId}</a><i class="material-icons" id="previewLink">visibility</i></td>
-              <td class="deleteLink"><i class="material-icons"><a href="/${shortURL.shortId}/delete">delete</a></i></td>
+              <td class="deleteLink"><i class="material-icons"><a class="delete" href="/${shortURL.shortId}/delete">delete</a></i></td>
           </tr>
           `
         });
@@ -42,12 +42,12 @@ $(function () {
 });
 
 //Delete without REloading the Browser
-function DeleteAllData(){
-  $.ajax({
-    url: '/deleteall/deleteAllLinks',
-    type: "POST",
-    success: function(){
-      return getAllData()
-    }
-  })
-}
+  function DeleteAllData(){
+    $.ajax({
+      url: '/deleteall/deleteAllLinks',
+      type: "POST",
+      success: function(){
+        return getAllData()
+      }
+    })
+  }
